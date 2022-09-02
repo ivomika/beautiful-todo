@@ -16,23 +16,21 @@ interface ContainerProps{
 }
 
 const Container = styled.div<ContainerProps>`
-      border: 1px black solid;
-      padding: 10px 15px;
-      margin-bottom: 8px;
-      background: ${props => (props.isDragging ? 'white' : 'azure')};
-      text-decoration: ${props => (props.isDone ? 'line-through' : 'none')};
-      color: ${props => (props.isDone ? 'gray' : 'black')};
+  padding: 15px 25px;
+  margin-bottom: 8px;
+  border-radius: .5rem;
+  opacity: ${props => (props.isDragging ? '.4' : '1')};
+  text-decoration: ${props => (props.isDone ? 'line-through' : 'none')};
+  color: ${props => (props.isDone ? 'gray' : 'black')};
+  background-color: ${props=> (props.isDone ? '#ababbd' : '#e0e3e7')};
 `
 
 export function Task({task, index}: TaskProps) {
 
-    // const [done, setDone] = useState(task.isDone)
     const databaseContext = useContext(DatabaseContext)
 
     function clickHandler(event: React.MouseEvent) {
         databaseContext.setChecked(task.id)
-        // setDone(!done)
-    //    TODO: Добавить в базу изменение
     }
 
     return (

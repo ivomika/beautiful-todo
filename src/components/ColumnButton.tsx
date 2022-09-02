@@ -3,36 +3,23 @@ import styled from "styled-components";
 import {useContext} from "react";
 import DatabaseContext from "../context/DatabaseContext";
 
-interface ColumnProps {
-
-}
-
-const Container = styled.div`
-      margin: 20px;
-      padding: 10px 20px;
-      background: azure;
-      width: 300px;
-      min-width: 300px;
-      max-width: 300px;
-      border: 2px black solid;
-      height: 500px;
-  
-      display: flex;
-      flex-direction: column;
-    `
-const Title = styled.h3`
-      margin-bottom: 15px;
-      font-weight: bold;
-      font-size: 24px;
-    `
 const Button = styled.button`
-      width: 100%;
-      height: 100%;
-      font-size: 40px;
-      background: azure;
+      position: fixed;
+      left: 1rem;
+      top: 1rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      font-size: 24px;
+      border: none;
+    
+      :hover {
+        background-color: #dbdfe1;
+        cursor: pointer;
+      }
     `
 
-export function ColumnButton(props: ColumnProps) {
+export function ColumnButton() {
     const databaseContext = useContext(DatabaseContext)
 
     function clickHandler() {
@@ -40,11 +27,6 @@ export function ColumnButton(props: ColumnProps) {
     }
 
     return (
-        <div>
-            <Container>
-                <Title>Add-new-сolumn</Title>
-                <Button onClick={clickHandler}>+</Button>
-            </Container>
-        </div>
+        <Button onClick={clickHandler}>+</Button>
     )
 }

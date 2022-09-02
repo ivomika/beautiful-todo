@@ -10,6 +10,7 @@ import {ColumnButton} from "./components/ColumnButton";
 
 const Container = styled.div`
   display: flex;
+  padding: 5rem 2rem;
 `
 
 const Background = styled.div`
@@ -178,13 +179,13 @@ function App() {
                   {columns.map((column: IColumnModel, index) => {
                     return <Column key={column.id} column={column} tasks ={column.tasks} index={index} />
                   })}
-                  <ColumnButton/>
                   {provided.placeholder}
                 </Container>
             }
           </Droppable>
         </DragDropContext>
         <Background/>
+        <ColumnButton/>
       </DatabaseContext.Provider>
   )
 }

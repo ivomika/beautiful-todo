@@ -8,12 +8,17 @@ interface TaskButtonProps {
 }
 
 const CreateButton = styled.button`
-  border: 1px black solid;
-  padding: 10px 15px;
-  margin-bottom: 8px;
-  background: azure;
-  font-size: 42px;
-  
+  border-radius: .5rem;
+  border: none;
+  background-color: #eaedee;
+  padding: 15px;
+  font-size: 24px;
+  box-shadow: 0 -4px 20px -15px #333;
+
+  :hover {
+    background-color: #dbdfe1;
+    cursor: pointer;
+  }
 `
 
 export function TaskButton({columnId}: TaskButtonProps) {

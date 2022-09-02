@@ -16,32 +16,37 @@ interface TaskListProps {
     isDraggingOver: boolean
 }
 
-const Container = styled.div`
-      margin: 20px;
-      padding: 10px 20px;
-      background: azure;
-      width: 300px;
-      border: 2px black solid;
-  
-      display: flex;
-      flex-direction: column;
-    `
+const TaskBoard = styled.div`
+  min-width: 300px;
+  max-width: 300px;
+  background: #eaedee;
+  border-radius: 1rem;
+  margin: 0 40px;
+
+  display: flex;
+  flex-direction: column;
+`
+
+const Container = styled.div``
+
 const Title = styled.h3`
-      margin-bottom: 15px;
-      font-weight: bold;
-      font-size: 24px;
-    `
+  padding: 25px 25px 0 25px;
+  font-weight: bold;
+  font-size: 24px;
+`
 const TaskList = styled.div<TaskListProps>`
-      background: ${props => (props.isDraggingOver? 'aqua': 'azure')};
-      flex-grow: 1;
-    `
+  background: ${props => (props.isDraggingOver? '#b5cbee': '#eaedee')};
+  transition: background-color .2s linear;
+  flex-grow: 1;
+  padding: 25px;
+`
 
 export function Column({column, tasks, index}: ColumnProps) {
     return (
         <Draggable draggableId={column.id} index={index}>
             {(provided)=>
-                <div>
-                    <Container
+                <Container>
+                    <TaskBoard
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                     >
@@ -61,8 +66,8 @@ export function Column({column, tasks, index}: ColumnProps) {
                             )}
                         </Droppable>
                         <TaskButton columnId={index}/>
-                    </Container>
-                </div>
+                    </TaskBoard>
+                </Container>
             }
         </Draggable>
     )
